@@ -1,0 +1,42 @@
+body {
+    background-color: lightgray;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose {
+    padding: 50px;
+    font-size: x-large;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.body-img {
+    display: flex;
+    gap: 52px;
+    flex-shrink: 1;
+}
+
+#printComputer,
+#printHuman,
+#printWinner {
+    font-size: larger;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace
+}
+
+#printHumanScore,
+#printComputerScore {
+    font-size: large;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    flex-shrink: 1;
+}
+
+bttn-selector {
+    height: 100px;
+    flex-shrink: 1;
+}

@@ -1,46 +1,87 @@
-function getComputerChoice() {
-    let words = ['rock' , 'paper' , 'scissors']
-    let computerChoice = words[Math.floor(Math.random() * words.length)]
-    return computerChoice;
-}
+//Dom variables//
+const bttn = document.querySelectorAll(".bttn");
+const printHumanScore = document.querySelector("#printHumanScore");
+const printComputerScore = document.querySelector("#printComputerScore");
+const printHuman = document.querySelector("#printHuman");
+const printComputer = document.querySelector("#printComputer");
+const printWinner = document.querySelector("#printWinner");
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, paper, or scissors?");
-    return humanChoice.toLowerCase();
-}
-
+//scores//
 let humanScore = 0;
 let computerScore = 0;
 
+//function through eventlistener on each click//
+bttn.forEach((button) => {
+    button.addEventListener("click", () => {
+    getComputerChoice();
+    getHumanChoice();
+    playRound();
+    playGame();
+})
+    //variables//
+let computerChoice = getComputerChoice();
+const humanChoice = getHumanChoice();
+
+    //function for human choice//
+function getHumanChoice() {
+    let humanChoice = button.value;
+    return humanChoice
+}
+    
+    //function for computer choice
+function getComputerChoice() {
+    let choices = ['rock', 'paper', 'scissors']
+    let computerChoice = choices[Math.floor(Math.random() * choices.length)]
+    return computerChoice;
+}
+    
+    //function for playing a round//
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("it's a tie!");
+        printHumanScore.innerHTML = "You: " + humanScore;
+        printComputerScore.innerHTML = "Computer: " + computerScore;
+        printHuman.innerHTML = "You chose: " + humanChoice;
+        printComputer.innerHTML = "The computer chose: " + computerChoice;
     } else if ((humanChoice === "rock" && computerChoice === "scissors") ||
                 (humanChoice === "paper" && computerChoice === "rock") ||
                 (humanChoice === "scissors" && computerChoice === "paper")) {
                     humanScore++;
-                    console.log('You win!')
+                    printHumanScore.innerHTML = "You: " + humanScore;
+                    printComputerScore.innerHTML = "Computer: " + computerScore;
+                    printHuman.innerHTML = "You chose: " + humanChoice;
+                    printComputer.innerHTML = "The computer chose: " + computerChoice;
     } else {
         computerScore++;
-        console.log('You lose :(')
+        printHumanScore.innerHTML = "You: " + humanScore;
+        printComputerScore.innerHTML = "Computer: " + computerScore;
+        printHuman.innerHTML = "You chose: " + humanChoice;
+        printComputer.innerHTML = "The computer chose: " + computerChoice;
     }
     return playRound;
 }
-
+    
+    //function for playing a whole game//
 function playGame () {
     for (let rounds=1; rounds<=5; rounds++) {
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
-        alert("You chose " + `${humanChoice} ` + "and the computer chose " + `${computerChoice}`);
-        alert("Score: " + humanScore + "-" + computerScore);
         if (rounds === 5 && (humanScore > computerScore)) {
-        alert("You win!");
+            printWinner.innerHTML = "You win! :)";
         } else if (rounds === 5 && (computerScore > humanScore)) {
-        alert("You lose :(");
+            printWinner.innerHTML = "You lose. :(";
         } else if (rounds === 5) {
-        alert("It's a tie!")
+            printWinner.innerHTML = "It's a tie!";
         }
     }
-}
-console.log(playGame());
+    return playGame; 
+}    
+})
+
+
+
+
+
+
+
+

@@ -3,8 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>Rock, Paper, Scissors</title>
+        <link rel = "stylesheet" href = "styles.css">
     </head>
     <body>
-        <script src="rpsScript.js"></script>
+        <script src="rpsScript.js" defer></script>
+        <div class = choose>Choose your weapon!</div>
+        <div class = body-img>
+            <p id = printHumanScore></p>
+            <button class = "bttn" value = "rock"><img src = "images/rockEmoji.png" height = "100"></button>
+            <button class = "bttn" value = "paper"><img src = "images/paperEmoji.webp" height = "100"></button>
+            <button class = "bttn" value = "scissors"><img src = "images/scissorsEmoji.webp" height = "100"></button>
+            <p id = printComputerScore></p>
+        </div>
+        <!-- Below, this is where the "human chose..." is printed-->
+        <p id = printHuman></p>
+        <!-- Below, this is where the "The computer chose..." is printed-->
+        <p id = printComputer></p>
+        <!-- Below, this is where the winner is printed-->
+        <p id = printWinner></p>
     </body>
 </html>
