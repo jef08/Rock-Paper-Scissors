@@ -1,5 +1,5 @@
 //Dom variables//
-const bttn = document.querySelectorAll(".bttn");
+const buttons = document.querySelectorAll(".bttn");
 const printHumanScore = document.querySelector("#printHumanScore");
 const printComputerScore = document.querySelector("#printComputerScore");
 const printHuman = document.querySelector("#printHuman");
@@ -11,77 +11,65 @@ let humanScore = 0;
 let computerScore = 0;
 
 //function through eventlistener on each click//
-bttn.forEach((button) => {
+buttons.forEach((button) => {
     button.addEventListener("click", () => {
     getComputerChoice();
     getHumanChoice();
     playRound();
-    playGame();
-})
-    //variables//
-let computerChoice = getComputerChoice();
-const humanChoice = getHumanChoice();
 
     //function for human choice//
-function getHumanChoice() {
-    let humanChoice = button.value;
-    return humanChoice
-}
+    function getHumanChoice() {
+        let humanChoice = button.dataset.humanChoice;
+        return humanChoice
+    }
     
     //function for computer choice
-function getComputerChoice() {
-    let choices = ['rock', 'paper', 'scissors']
-    let computerChoice = choices[Math.floor(Math.random() * choices.length)]
-    return computerChoice;
-}
+    function getComputerChoice() {
+        let choices = ['rock', 'paper', 'scissors']
+        let computerChoice = choices[Math.floor(Math.random() * choices.length)]
+        return computerChoice;
+    }
     
     //function for playing a round//
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        printHumanScore.innerHTML = "You: " + humanScore;
-        printComputerScore.innerHTML = "Computer: " + computerScore;
-        printHuman.innerHTML = "You chose: " + humanChoice;
-        printComputer.innerHTML = "The computer chose: " + computerChoice;
-    } else if ((humanChoice === "rock" && computerChoice === "scissors") ||
-                (humanChoice === "paper" && computerChoice === "rock") ||
-                (humanChoice === "scissors" && computerChoice === "paper")) {
-                    humanScore++;
-                    printHumanScore.innerHTML = "You: " + humanScore;
-                    printComputerScore.innerHTML = "Computer: " + computerScore;
-                    printHuman.innerHTML = "You chose: " + humanChoice;
-                    printComputer.innerHTML = "The computer chose: " + computerChoice;
-    } else {
-        computerScore++;
-        printHumanScore.innerHTML = "You: " + humanScore;
-        printComputerScore.innerHTML = "Computer: " + computerScore;
-        printHuman.innerHTML = "You chose: " + humanChoice;
-        printComputer.innerHTML = "The computer chose: " + computerChoice;
-    }
-    return playRound;
-}
-    
-    //function for playing a whole game//
-function playGame () {
-    for (let rounds=1; rounds<=5; rounds++) {
-        let humanChoice = getHumanChoice();
+    function playRound() {
+        
+        //variables//
         let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        if (rounds === 5 && (humanScore > computerScore)) {
-            printWinner.innerHTML = "You win! :)";
-        } else if (rounds === 5 && (computerScore > humanScore)) {
-            printWinner.innerHTML = "You lose. :(";
-        } else if (rounds === 5) {
-            printWinner.innerHTML = "It's a tie!";
+        let humanChoice = getHumanChoice();
+        
+        if (humanChoice === computerChoice) {
+            computerScore++;
+            humanScore++;
+            printHumanScore.innerHTML = "You: " + humanScore;
+            printComputerScore.innerHTML = "Computer: " + computerScore;
+            printHuman.innerHTML = "you chose: " + humanChoice;
+            printComputer.innerHTML = "The computer chose: " + computerChoice;
+        } else if ((humanChoice === "rock" && computerChoice === "scissors") ||
+                    (humanChoice === "paper" && computerChoice === "rock") ||
+                    (humanChoice === "scissors" && computerChoice === "paper")) {
+                        humanScore++;
+                        printHumanScore.innerHTML = "You: " + humanScore;
+                        printComputerScore.innerHTML = "Computer: " + computerScore;
+                        printHuman.innerHTML = "you chose: " + humanChoice;
+                        printComputer.innerHTML = "The computer chose: " + computerChoice;
+        } else {
+            computerScore++;
+            printHumanScore.innerHTML = "You: " + humanScore;
+            printComputerScore.innerHTML = "Computer: " + computerScore;
+            printHuman.innerHTML = "you chose: " + humanChoice;
+            printComputer.innerHTML = "The computer chose: " + computerChoice;
+        }
+        
+        if (humanScore === 5) {
+            printWinner.innerHTML = "You win! :)"
+            button.disabled = true;
+        } else if (computerScore === 5) {
+            printWinner.innerHTML = "You lose! :("
+            button.disabled = true;
+        } else if (humanScore === 5 && computerScore === 5) {
+            printWinner.innerHTML = "It's a tie!"
+            button.disabled = true;
         }
     }
-    return playGame; 
-}    
+    })
 })
-
-
-
-
-
-
-
-
