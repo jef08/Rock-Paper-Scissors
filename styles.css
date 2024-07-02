@@ -8,7 +8,8 @@ body {
 }
 
 .choose {
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 25px;
     font-size: x-large;
     font-weight: 900;
     font-family: 'Courier New', Courier, monospace;
@@ -28,15 +29,18 @@ body {
     font-family: 'Courier New', Courier, monospace
 }
 
-#printHumanScore,
-#printComputerScore {
+.printScores {
     font-size: large;
+    padding-top: 15px;
+    padding-bottom: 30px;
     font-weight: 600;
     font-family: 'Courier New', Courier, monospace;
     flex-shrink: 1;
 }
 
-bttn-selector {
-    height: 100px;
-    flex-shrink: 1;
+#playAgain {
+    font-size: medium;
+    height: 50;
+    width: 100;
+    font-family: 'Courier New', Courier, monospace;
 }
