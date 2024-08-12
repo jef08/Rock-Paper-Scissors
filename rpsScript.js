@@ -2,9 +2,9 @@
 const buttons = document.querySelectorAll(".bttn");
 const printScores = document.querySelector(".printScores");
 const printHuman = document.querySelector("#printHuman");
-const printComputer = document.querySelector("#printComputer");
 const printWinner = document.querySelector("#printWinner");
 const playAgain = document.querySelector("#playAgain");
+const choose = document.querySelector(".choose")
 
 //scores//
 let humanScore = 0;
@@ -25,9 +25,12 @@ playAgain.addEventListener('click', refreshPage)
 
 //Code for button and text within button// 
 //code for button to appear is with the winner code at the bottom//
-let refreshbutton = document.createElement('button');
+let refreshButton = document.createElement('button');
+refreshButton.classList.add('refreshButton');
 let buttonText = document.createTextNode("Play again?");
-refreshbutton.appendChild(buttonText);
+refreshButton.appendChild(buttonText);
+
+
 
 //function through eventlistener on each click//
 buttons.forEach((button) => {
@@ -61,38 +64,44 @@ buttons.forEach((button) => {
             computerScore++;
             humanScore++;
             printScores.innerHTML = humanScore + "-" + computerScore ;
-            printHuman.innerHTML = "you chose: " + humanChoice;
-            printComputer.innerHTML = "The computer chose: " + computerChoice;
-            printWinner.innerHTML = "It's a tie!"
+            printHuman.innerHTML = "You chose: " + humanChoice + "   |   " + "The computer chose: " + computerChoice;
+            printWinner.innerHTML = "Draw - one point each"
         } else if ((humanChoice === "rock" && computerChoice === "scissors") ||
                     (humanChoice === "paper" && computerChoice === "rock") ||
                     (humanChoice === "scissors" && computerChoice === "paper")) {
                         humanScore++;
                         printScores.innerHTML = humanScore + "-" + computerScore ;
-                        printHuman.innerHTML = "you chose: " + humanChoice;
-                        printComputer.innerHTML = "The computer chose: " + computerChoice;
-                        printWinner.innerHTML = "You win! :)"
+                        printHuman.innerHTML = "You chose: " + humanChoice + "   |   " + "The computer chose: " + computerChoice;
+                        printWinner.innerHTML = humanChoice + " beats " + computerChoice + "!"
         } else {
             computerScore++;
             printScores.innerHTML = humanScore + "-" + computerScore ;
-            printHuman.innerHTML = "you chose: " + humanChoice;
-            printComputer.innerHTML = "The computer chose: " + computerChoice;
-            printWinner.innerHTML = "You lose! :("
+            printHuman.innerHTML = "You chose: " + humanChoice + "   |   " + "The computer chose: " + computerChoice;
+            printWinner.innerHTML = computerChoice + " beats " + humanChoice + "!"
         }
         
         //print overall winner and disable buttons (window settimeout for later versions)//
         if (humanScore === 5 && computerScore != 5) {
-            printWinner.innerHTML = "You won the game! :)"
+            choose.remove();
+            printHuman.remove();
+            printWinner.style.fontSize = "40px"
+            printWinner.innerHTML = "You won! :)"
             disableButtons();
-            playAgain.appendChild(refreshbutton);
+            playAgain.appendChild(refreshButton);
         } else if (computerScore === 5 && humanScore != 5) {
-            printWinner.innerHTML = "You lost the game! :("
+            choose.remove();
+            printHuman.remove();
+            printWinner.style.fontSize = "40px"
+            printWinner.innerHTML = "You lost! :("
             disableButtons();
-            playAgain.appendChild(refreshbutton);
+            playAgain.appendChild(refreshButton);
         } else if (humanScore === 5 && computerScore === 5) {
-            printWinner.innerHTML = "You tied the game!"
+            choose.remove();
+            printHuman.remove();
+            printWinner.style.fontSize = "4px"
+            printWinner.innerHTML = "It's a tie!"
             disableButtons();
-            playAgain.appendChild(refreshbutton);
+            playAgain.appendChild(refreshButton);
         }
     }
     })

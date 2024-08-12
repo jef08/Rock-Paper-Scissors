@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(157, 181, 207);
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -11,8 +11,8 @@ body {
     padding-top: 50px;
     padding-bottom: 25px;
     font-size: x-large;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT';
 }
 
 .body-img {
@@ -21,26 +21,58 @@ body {
     flex-shrink: 1;
 }
 
-#printComputer,
 #printHuman,
 #printWinner {
     font-size: larger;
     font-weight: 600;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Gill Sans', 'Gill Sans MT';
+}
+
+#printWinner {
+    padding-bottom: 30px;
 }
 
 .printScores {
-    font-size: large;
-    padding-top: 15px;
+    font-size: xx-large;
+    padding-top: 30px;
     padding-bottom: 30px;
     font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Gill Sans', 'Gill Sans MT';
     flex-shrink: 1;
 }
 
-#playAgain {
-    font-size: medium;
-    height: 50;
-    width: 100;
-    font-family: 'Courier New', Courier, monospace;
+.refreshButton {
+    height: 50px;
+    width: 100px;
+    font-size: large;
+    font-weight: 500;
+    color: rgb(36, 1, 69);
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: rgb(63, 3, 119);
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.519);
+}
+
+.refreshButton:hover{
+    background-color: rgba(137, 43, 226, 1);
+    color: rgb(227, 202, 227);
+}
+
+.refreshButton:active {
+    background-color: rgb(128, 0, 128);
+    border-color: rgb(128, 0, 128);
+    transform: translateY(4px);
+    color: lightgrey;
+}
+
+.bttn {
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bttn:hover {
+    transform: scale(1.2)
 }
